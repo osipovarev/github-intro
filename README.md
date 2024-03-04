@@ -15,6 +15,7 @@
 
 We will be running through this repo using first the desktop app GitHub desktop and then using the command line. 
 
+These steps will primarily happen on the GitHub app or the website
 0. Break into groups of 2-3
 1. Fork this repo (and name the forked repo `github-intro-YOURNAME`)
 2. Clone your forked repo onto your local computer
@@ -29,15 +30,25 @@ We will be running through this repo using first the desktop app GitHub desktop 
 
 Now we will be working on the command line.
 1. Clone the original repo onto your local computer
-2. Start a new branch called `haiku-YOURNAME` and write 1-2 lines of a haiku.
+    `git clone https://github.com/harvardinformatics/github-intro.git`
+2. Start a new branch called `haiku-NAME` and write 1-2 lines of a haiku.
+    `git checkout -b haiku-NAME`
 3. Commit your changes & push to your branch
-4. Merge your branch either by directly merging on the command line
-5. Make a PR to the original repo and assign your partner to review
-6. Review your partner's PR and merge it into the original repo, deleting the branch afterwards
-7. Pull the changes from the original repo into your local repo and add one more line to the haiku
-8. Commit your change
-9. Swap that line for another line
-10. Reverse your change using git checkout or git revert
-11. Push your changes and make a PR to finish out the exercise
-12. Review your partner's PR and say something nice about their haiku!
-
+    `git add haikus/haiku_test.md`
+    `git commit -m "Add haiku line"`
+    3.1 If you try to push your branch, you will get an error. You need to set the upstream branch on your first push
+    `git push` <- this will give you an error "The current branch haiku-NAME has no upstream branch"
+    `git push --set-upstream origin haiku-NAME` <- this creates the branch on your remote to push to
+5. Make a PR to the main branch repo and assign your partner to review
+    `gh pr create --head haiku-lei --assignee "@YOURPARTNER"`
+6. Review your partner's PR and add the next lines
+    `gh pr checkout PRNUMBER`
+7. Decide you don't like that line and want to change it back
+    `git log` <- find the commit hash of the commit you want to revert to
+    `git checkout COMMIT_HASH haikus/haiku_test.md`
+8. Add the final lines to the haiku
+9. Commit your changes and push upstream
+    `git add haikus/haiku_test.md`
+    `git commit -m "Add final lines to haiku"`
+    `git push --set-upstream origin haiku-NAME`
+12. Merge the PR and say something nice about the haiku!
