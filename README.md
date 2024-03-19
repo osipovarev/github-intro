@@ -14,15 +14,29 @@ These steps will primarily happen on the command line. Make sure you have the Gi
     * `git commit -m "Add study spaces file"`
 6. Push your changes to your forked repo
     * `git push`
-7. Open a pull request to merge your changes into the original repo
+7. Open a pull request to merge your changes into the original repo (can also do this on the GitHub website)
     * `gh pr create --assignee "@YOURPARTNER"`
-8. Review your partner's pull request and merge it into the original repo
+8. Review your partner's pull request and merge it into the original repo (can also do this on the GitHub website)
     * `gh pr checkout PRNUMBER`
     * `gh pr merge`
 9. Pull the changes from the original repo into your local repo
     * `git pull`
 
-Now we will be working on GitHub Desktop, the GitHub website, or VSCode git integration. Use whichever GUI you prefer and find the equivalent commands to the command line commands printed below.
+Now we will be working on GitHub Desktop, the GitHub website, or VSCode git integration. Use whichever GUI you prefer and find the equivalent commands to the command line commands printed below. We will be creating a branch and then working on the same file on two different branches to create a merge conflict. Branches are great for experimenting on a feature or fixing a bug without affecting the main code, but they can cause merge conflicts if two branches change the same line of code.
+
+Example of branching:
+```mermaid
+gitGraph
+    commit
+    branch bugFix
+    commit
+    commit
+    commit
+    checkout main
+    merge bugFix id: "merge"
+    commit
+```
+
 1. Open your forked repo in your preferred text editor
 2. Create an empty file called `haiku_yourname.md` in the `haikus` folder and commit & push it
     * `git add haikus/haiku_yourname.md`
@@ -42,8 +56,22 @@ Now we will be working on GitHub Desktop, the GitHub website, or VSCode git inte
     * `git add haikus/haiku_yourname.md`
     * `git commit -m "Add haiku line"`
     * `git push`
-8. Make a pull request from `haiku-test` and try to merge it into `main`
+8. Open a pull request from `haiku-test` and try to merge it into `main`
     * `gh pr create`
     * `gh pr checkout PRNUMBER`
     * `gh pr merge`
 9. Use the GitHub interface or VSCode to resolve the merge conflict
+10. Delete the branch once you are done merging (using the GitHub web interfact, command line version printed for reference)
+    * `git branch -d haiku-test`
+
+For reference, this is the gitflow diagram for the above steps:
+
+```mermaid
+gitGraph
+    commit id: "Add empty haiku file"
+    branch haiku-test
+    commit id: "Add haiku lines"
+    checkout main
+    commit id: "Add haiku line"
+    merge haiku-test type: highlight tag: "merge conflict"
+```
