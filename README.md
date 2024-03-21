@@ -2,7 +2,8 @@
 
 We will be running through this repo using first the command line and then GitHub Desktop or VSCode git integration.
 
-These steps will primarily happen on the command line. Make sure you have the GitHub CLI installed and authenticated.
+These steps will primarily happen on the command line. Make sure you have the GitHub CLI installed and authenticated if you want to use the command line to do the pull request. Otherwise, you can use the GitHub website.
+
 0. Break into pairs
 1. Fork this repo (and name the forked repo `github-intro-YOURNAME`)
 2. Clone your forked repo onto your local computer
@@ -19,10 +20,11 @@ These steps will primarily happen on the command line. Make sure you have the Gi
 8. Review your partner's pull request and merge it into the original repo (can also do this on the GitHub website)
     * `gh pr checkout PRNUMBER`
     * `gh pr merge`
-9. Pull the changes from the original repo into your local repo
+9. On your fork, sync your fork so your repo is updated (Do this on the github website)
+10. Pull the changes from the your fork into your local repo
     * `git pull`
 
-Now we will be working on GitHub Desktop, the GitHub website, or VSCode git integration. Use whichever GUI you prefer and find the equivalent commands to the command line commands printed below. We will be creating a branch and then working on the same file on two different branches to create a merge conflict. Branches are great for experimenting on a feature or fixing a bug without affecting the main code, but they can cause merge conflicts if two branches change the same line of code.
+Now we will be working on GitHub Desktop, the GitHub website, or VSCode git integration. Use whichever GUI you prefer. The equivalent command line commands to GUI options are printed below each step. We will be creating a branch and then working on the same file on two different branches to create a merge conflict. Branches are great for experimenting on a feature or fixing a bug without affecting the main code, but they can cause merge conflicts if two branches change the same line of code.
 
 Example of branching:
 ```mermaid
@@ -63,6 +65,7 @@ gitGraph
 9. Use the GitHub interface or VSCode to resolve the merge conflict
 10. Delete the branch once you are done merging (using the GitHub web interfact, command line version printed for reference)
     * `git branch -d haiku-test`
+11. (Optional) Submit a pull request to the original repo with your haiku so we can all see it!
 
 For reference, this is the gitflow diagram for the above steps:
 
